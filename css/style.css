@@ -1,0 +1,120 @@
+header {
+    margin: 30px;
+    font-size: 30px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-weight: bold;
+    color: #083c44;
+}
+
+body {
+    background-color: #d1e3e480;
+}
+
+hr {
+    border-width: 2px;
+    border-color: #c9c9c9;
+}
+
+p {
+    color: rgb(90, 90, 90);
+    font-size: 15px;
+    margin: 15px 50px;
+}
+
+/* マウスオーバーで色変える */
+ul.over{
+    list-style: none;   
+    display: flex;
+    justify-content:space-around;
+    margin: 30px;
+    padding: 0;
+}
+.over img{
+    width: 200px;
+    height: auto;
+    opacity: 1;
+    transition: .3s;
+}
+.over img:hover{
+    opacity: 0.5;
+}
+
+/* 釦クリックで表示切替 */
+.hidden_box {
+    margin: 2em 0;/*前後の余白*/
+    padding: 0;
+}
+.hidden_box label {/*ボタン装飾*/
+    padding: 8px;
+    font-weight: bold;
+    cursor :pointer;
+    color:#021b1dbe;
+    margin: 10px 40px;
+}
+.hidden_box label:hover {/*ボタンホバー時*/
+    background: #ffffff;
+    border-radius: 20px;
+}
+.hidden_box input {/*チェックは見えなくする*/
+    display: none;
+}
+.hidden_box .hidden_show {/*中身を非表示にしておく*/
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+.hidden_box input:checked ~ .hidden_show {/*クリックで中身表示*/
+    padding: 10px;
+    height: auto;
+    opacity: 1;
+}
+
+/* リンクボタン */
+.link_button{
+/*    font-weight: bold; */
+    text-decoration: none;
+    background-color: #36898d80;
+    color: #ffffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: block;
+    margin: 12px 50px;
+    width: 150px;
+    text-align: center;
+}
+.link_button:hover{
+    opacity: 0.5;
+}
+
+/* 時間差で画像表示させたかったけど、リロードした後に１回しかできない。 */
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+ul.over li:nth-child(1) {
+    opacity: 0;
+    animation: fade 1.5s ease 1.5s 1 normal forwards;
+}
+ul.over li:nth-child(2) {
+    opacity: 0;
+    animation: fade 1.5s ease 2s 1  normal forwards;
+}
+ul.over li:nth-child(3) {
+    opacity: 0;
+    animation: fade 1.5s ease 2.5s 1  normal forwards;
+}
+
+/* 画面サイズに応じて画像折り返し */
+@media only screen and (max-width: 600px){
+    .hidden_box .hidden_show ul.over {
+/*        float: none; */
+        display: block;
+/*        margin: 0 auto; */
+    }
+}
