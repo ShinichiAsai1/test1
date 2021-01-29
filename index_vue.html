@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_vue.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300" rel="stylesheet">
+    <title>SHINICHI ASAI</title>
+
+    <!-- 拡大画像ポップアップ -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+</head>
+<body>
+    <input type="button" value="SHINICHI ASAI" class="header_button"
+    onclick="window.location.reload(true);">
+
+    <hr noshade>
+
+    <main id="id_main">
+       
+        <div id="app">
+            <div class="navigation">
+                <button v-on:click="divAbtn" class="naviBtn">about</button> 
+                <button v-on:click="divBbtn" class="naviBtn">film</button> 
+                <button v-on:click="divCbtn" class="naviBtn">digital</button> 
+                <button v-on:click="divDbtn" class="naviBtn">equipment</button>
+                <!-- <button v-bind:class="{ nabiBtn: !divAbtn, nabiBtnClick: divAbtn}" v-on:click="divAbtn">about</button> 
+                <button v-bind:class="{ nabiBtn: !divBbtn, nabiBtnClick: divBbtn}" v-on:click="divBbtn">film</button> 
+                <button v-bind:class="{ nabiBtn: !divCbtn, nabiBtnClick: divCbtn}" v-on:click="divCbtn">digital</button> 
+                <button v-bind:class="{ nabiBtn: !divDbtn, nabiBtnClick: divDbtn}" v-on:click="divDbtn">equipment</button> -->
+            </div>
+
+            <div class="content" style="width:500px; height: 600px; overflow: scroll;">
+                <div v-show="divA" class="fadeDisplay">
+                    <p>1986年　鳥取県生まれ</p>
+                    <p>2010年　北海道大学大学院修了、KM入社</p>        
+                </div>
+
+                <div v-show="divB">
+                    <ul class="photo">
+                        <li>
+                            <a href="img/img01.jpg" data-lightbox="group1"><img src="img/img01.jpg" width="300"></a>
+                        </li>
+                        <li>
+                            <a href="img/img02.jpg" data-lightbox="group1"><img src="img/img02.jpg" width="300"></a>
+                        </li>
+                        <li>
+                            <a href="img/img03.jpg" data-lightbox="group1"><img src="img/img03.jpg" width="300"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div v-show="divC">
+                    <ul class="photo">
+                        <li>
+                            <a href="img/img04.jpg" data-lightbox="group2"><img src="img/img04.jpg" width="300"></a>
+                        </li>
+                        <li>
+                            <a href="img/img05.jpg" data-lightbox="group2"><img src="img/img05.jpg" width="300"></a>
+                        </li>
+                        <li>
+                            <a href="img/img06.jpg" data-lightbox="group2"><img src="img/img06.jpg" width="300"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div v-show="divD" class="fadeDisplay">
+                    <a class="link_button" href="https://www.kenko-tokina.co.jp/konicaminolta/history/konica/1960/1965.html" target="_blank">film camera</a>
+                    <a class="link_button" href="https://www.sony.jp/ichigan/products/ILCE-7RM2/" target="_blank">digital camera</a>
+                    <a class="link_button" href="https://www.captureone.com/ja" target="_blank">soft</a>
+                </div>
+
+                <div v-show="divE" class="fadeDisplay">
+                    <p href="img/img03resize.jpg"><img src="img/img03resize.jpg"></p>
+                    <p href="img/img02resize.jpg"><img src="img/img02resize.jpg"></p>
+                    <p href="img/img01resize.jpg"><img src="img/img01resize.jpg"></p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        // FOUC(Flash Of Unstyled Content)対策
+        $(window).on('load', function() {
+            $('#id_main').fadeIn(0); 
+        });
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                divA: false,
+                divB: false,
+                divC: false,
+                divD: false,
+                divE: true
+            },
+            methods:{
+                divAbtn: function(){
+                    this.divA = true;
+                    this.divB = false;
+                    this.divC = false;
+                    this.divD = false;
+                    this.divE = false;
+                },
+                divBbtn: function(){
+                    this.divA = false;
+                    this.divB = true;
+                    this.divC = false;
+                    this.divD = false;
+                    this.divE = false;
+                },
+                divCbtn: function(){
+                    this.divA = false;
+                    this.divB = false;
+                    this.divC = true;
+                    this.divD = false;
+                    this.divE = false;
+                },
+                divDbtn: function(){
+                    this.divA = false;
+                    this.divB = false;
+                    this.divC = false;
+                    this.divD = true;
+                    this.divE = false;
+                }
+            }
+        })
+        
+    </script>
+
+</body>
+
+</html>
